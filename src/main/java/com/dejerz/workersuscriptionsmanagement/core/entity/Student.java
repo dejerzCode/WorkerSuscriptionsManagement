@@ -1,7 +1,6 @@
 package com.dejerz.workersuscriptionsmanagement.core.entity;
 
-import javax.swing.*;
-
+//Inheritance
 public class Student extends Person{
     private String id;
     private String picture;

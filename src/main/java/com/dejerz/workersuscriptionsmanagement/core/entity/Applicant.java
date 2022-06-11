@@ -2,7 +2,9 @@ package com.dejerz.workersuscriptionsmanagement.core.entity;
 
 import javax.swing.*;
 import java.util.Date;
+import java.util.Locale;
 
+//Inheritance
 public class Applicant extends Person{
     private String fileNumber;
     private String cui;
@@ -12,21 +14,23 @@ public class Applicant extends Person{
     public String getFileNumber() {
         return fileNumber;
     }
-
+    //Encapsulation
     public void setFileNumber(String fileNumber) {
         int position = fileNumber.indexOf("-");
         if(position > 0){
             if(fileNumber.substring(0,1).equals("F")){
-                if(fileNumber.substring(2,6).equals("2022")){
-                    this.fileNumber = fileNumber;
+                if(fileNumber.substring(2,6).length()==4){
+                    if(Integer.parseInt(fileNumber.substring(2,6))>0){
+                        this.fileNumber = fileNumber.toUpperCase();
+                    }
                 } else {
-                    this.fileNumber = "";
+                    this.fileNumber = "INVALID FILE NUMBER";
                 }
             } else {
-                this.fileNumber = "";
+                this.fileNumber = "INVALID FILE NUMBER";
             }
         } else {
-            this.fileNumber = "";
+            this.fileNumber = "INVALID FILE NUMBER";
         }
 
     }

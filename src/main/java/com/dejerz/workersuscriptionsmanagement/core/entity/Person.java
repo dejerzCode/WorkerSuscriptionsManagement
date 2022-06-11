@@ -1,5 +1,6 @@
 package com.dejerz.workersuscriptionsmanagement.core.entity;
 
+//Abstraction
 public abstract class Person {
     private String lastName;
     private String firstName;
