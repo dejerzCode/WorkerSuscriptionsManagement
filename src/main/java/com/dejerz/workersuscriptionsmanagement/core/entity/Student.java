@@ -1,7 +1,12 @@
 package com.dejerz.workersuscriptionsmanagement.core.entity;
 
+import com.dejerz.workersuscriptionsmanagement.WorkerSubscriptionsManagementApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //Inheritance
 public class Student extends Person{
+    private final Logger logger = LoggerFactory.getLogger(Student.class);
     private String id;
     private String picture;
     private String education;
@@ -32,6 +37,6 @@ public class Student extends Person{
 
     @Override
     public void sendPersonalInformationByEmail(String message) {
-        System.out.println(message);
+        logger.debug(message);
     }
 }

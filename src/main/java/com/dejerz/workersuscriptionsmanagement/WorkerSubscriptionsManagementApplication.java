@@ -3,6 +3,8 @@ package com.dejerz.workersuscriptionsmanagement;
 import com.dejerz.workersuscriptionsmanagement.core.entity.Applicant;
 import com.dejerz.workersuscriptionsmanagement.core.entity.Person;
 import com.dejerz.workersuscriptionsmanagement.core.entity.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,9 @@ import java.util.Date;
 
 @SpringBootApplication
 public class WorkerSubscriptionsManagementApplication implements CommandLineRunner {
+
+    //Careful with the version
+    private final Logger logger = LoggerFactory.getLogger(WorkerSubscriptionsManagementApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(WorkerSubscriptionsManagementApplication.class, args);
@@ -62,10 +67,11 @@ public class WorkerSubscriptionsManagementApplication implements CommandLineRunn
 
         for(Person p : listPeople){
             if(p instanceof Student){
-                System.out.println("ID: "+((Student) p).getId() + " Name: "+ p.getFirstName() + " " + p.getLastName());
+                logger.debug("ID: "+((Student) p).getId() + " Name: "+ p.getFirstName() + " " + p.getLastName());
             } else if (p instanceof Applicant){
-                System.out.println("File number: "+((Applicant) p).getFileNumber() + " Name: "+ p.getFirstName() + " " + p.getLastName());
+                logger.debug("File number: "+((Applicant) p).getFileNumber() + " Name: "+ p.getFirstName() + " " + p.getLastName());
             }
+            p.takeAttendance();
         }
 
     }

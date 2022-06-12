@@ -1,11 +1,16 @@
 package com.dejerz.workersuscriptionsmanagement.core.entity;
 
+import com.dejerz.workersuscriptionsmanagement.WorkerSubscriptionsManagementApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.util.Date;
 import java.util.Locale;
 
 //Inheritance
 public class Applicant extends Person{
+    private final Logger logger = LoggerFactory.getLogger(Applicant.class);
     private String fileNumber;
     private String cui;
     private String status;
@@ -61,6 +66,6 @@ public class Applicant extends Person{
 
     @Override
     public void sendPersonalInformationByEmail(String message) {
-        System.out.println(message);
+        logger.debug(message);
     }
 }

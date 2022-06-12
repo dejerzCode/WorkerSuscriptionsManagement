@@ -1,7 +1,14 @@
 package com.dejerz.workersuscriptionsmanagement.core.entity;
 
+import com.dejerz.workersuscriptionsmanagement.WorkerSubscriptionsManagementApplication;
+import com.dejerz.workersuscriptionsmanagement.interfaces.IAttendance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //Abstraction
-public abstract class Person {
+public abstract class Person implements IAttendance {
+    private final Logger logger = LoggerFactory.getLogger(Person.class);
+
     private String lastName;
     private String firstName;
     private String address;
@@ -49,4 +56,9 @@ public abstract class Person {
     }
 
     public abstract void sendPersonalInformationByEmail (String message);
+
+    @Override
+    public void takeAttendance() {
+        logger.debug("Attendance taken for: " + this.getFirstName() + " " + this.getLastName());
+    }
 }
